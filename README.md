@@ -1,6 +1,6 @@
 ## archive-machine
 
-A web archiving website using express
+A web archiving machine using express
 
 ## USER FLOW
 
@@ -31,12 +31,16 @@ Chrome
 Fork and clone this repo to your local machine
 
 Type these commands to get started:
-1. Follow this link to install Homebrew (http://brew.sh/) if you don't have one
+
+
+1. Follow this link to install Homebrew (`http://brew.sh/`) if you don't have one
 2. `brew install node` if you haven't installed nodejs
 3. `brew install mysql` if you haven't installed mysql
 4. `npm install` node dependencies
 5. In a separate tab of terminal in a same directory, type in `mysql -u root < ./schema.sql`
 6. Finally, run `npm start`
+7. Go to 'http://localhost:8080'
+8. Enjoy using the app
 
 ## TECH STACK
 

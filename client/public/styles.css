@@ -1,0 +1,102 @@
+
+body {
+  text-align: center;
+  font-family: monospace;
+  background-size: 150%;
+  font-size: 150%;
+  margin : 0px;
+  background-image: url("http://www.pageresource.com/wallpapers/wallpaper/download-cool-backgrounds.jpg");
+  background-repeat: no-repeat;
+}
+
+.stage {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  width: 500px;
+  height: 300px;
+  margin: 20% auto;
+  padding: 20px 20px 30px 40px;
+  -webkit-transition:  2s;
+  transition:  1s;
+}
+
+.msgbox{
+	width: 350px;
+	height: 100px;
+}
+
+.box{
+	margin-top: 60px;
+}
+
+/*input { font-size: 35px; text-align: center; }*/
+
+input[type='text'] { font-size: 35px; font-family: monospace; text-align: center;}
+
+.input--haruki {
+  margin: 1em 0em 1em;
+}
+
+.input__field--haruki {
+  padding: 0.4em 0.25em;
+  width: 80%;
+  background: transparent;
+  color: #AFB5BB;
+  font-size: 3.55em;
+}
+
+
+.input__label-content--haruki {
+  transition: transform 0.3s;
+}
+
+.input__field--haruki, select, textarea{
+    color: #484848 ;
+}
+
+textarea:focus, .input__field--haruki:focus {
+    color: #000000;
+}
+
+/*.input__label--haruki::before,
+.input__label--haruki::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 4px;
+  background: #6a7989;
+  transition: transform 0.3s;
+}
+
+.input__label--haruki::before {
+  top: 0;
+}
+
+.input__label--haruki::after {
+  bottom: 0;
+}*/
+
+.input__field--haruki:focus + .input__label--haruki .input__label-content--haruki,
+.input--filled .input__label-content--haruki {
+  transform: translate3d(0, -90%, 0);
+}
+
+.input__field--haruki:focus + .input__label--haruki::before,
+.input--filled .input__label--haruki::before {
+  transform: translate3d(0, -0.5em, 0);
+}
+
+.input__field--haruki:focus + .input__label--haruki::after,
+.input--filled .input__label--haruki::after {
+  transform: translate3d(0, 0.5em, 0);
+}
+
+.text-msg{
+  margin-top: 10px;
+}
+
+#page-footer {
+  color: darkblue;
+}

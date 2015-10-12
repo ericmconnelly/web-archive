@@ -1,0 +1,27 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="../scripts/app.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  </head>
+  <body>
+
+    <div class = "stage">
+    <h1>My Archive Machine</h1>
+    <div class = "box">
+      <form action="#" id="archive_url" method="post">
+        <span class="input input--haruki">
+    	     <input class="input__field input__field--haruki" type="text" id="url" name="url" placeholder = "Enter url..."/>
+           <input type="submit" name="submit" class="submit"/>
+    	  </span>
+      </form>
+    </div>
+    <script>
+      $(function(){
+        app.init();
+      });
+    </script>
+  </body>
+
+</html>

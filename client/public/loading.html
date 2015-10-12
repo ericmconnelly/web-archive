@@ -1,0 +1,31 @@
+.<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="../scripts/app.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  </head>
+
+  <body>
+    <div class = "stage">
+
+      <form  action="#"  id="job_status"  method="POST">
+        <span class="input input--haruki">
+        <div class ="status"> Check job status</div>
+      	<input class="input__field input__field--haruki" type="text" id="jobstatus" name="url" placeholder = "Enter jobID..."/>
+        <input type="submit" name="submit" class="submit"/>
+      </form>
+
+      <div class = "textmsg">Robots are currently archiving the site.</div>
+      <div> Please check back soon for a freshly embalmed copy!     ;)</div>
+
+      <img src="http://icons.iconarchive.com/icons/iconsmind/outline/512/Robot-2-icon.png" alt="Smiley face" height="100" width="100">
+    </div>
+    <script>
+      $(function(){
+        app.init();
+      });
+    </script>
+
+  </body>
+</html>

@@ -4,6 +4,7 @@ var cors = require('cors');
 var urlParser = require('url');
 var utils = require('../http-helpers');
 var archive = require('../../helpers/archive-helpers');
+var handler = require('./request_handler.js')
 
 
 module.exports = function(app, express) {
@@ -19,27 +20,15 @@ module.exports = function(app, express) {
   app.use(express.static(__dirname + '/../../client/public'));
 
   app.get('/*', function(request, response){
-    var parts = urlParser.parse(request.url);
-    var urlPath = parts.pathname === '/' ? '/index.html' : parts.pathname;
-    utils.serveAssets(response, urlPath, function(){
-      archive.isUrlInList(urlPath.slice(1), function(found){
-        if( found ){ // yes:
-          // redirect to loading
-          utils.sendRedirect(response, '/loading.html');
-        } else {
-          // 404
-          utils.send404(response);
-        }
-      });
-    });
+    handler.handleGet(request, response)
   });
 
   app.use('/api/job', jobRouter);
-  // app.use('/asset', assetRouter);
+
+  //prevent external API calls, potentially crash the server
   app.post('/*', function(){
     return;
   });
 
   require('../job/jobRoutes.js')(jobRouter);
-  // require('../asset/assetRoutes.js')(assetRouter, express);
 };

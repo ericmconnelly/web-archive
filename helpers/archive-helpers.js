@@ -1,3 +1,5 @@
+//Purpose: handle all the archiving task for the client
+
 var fs = require('fs');
 var path = require('path');
 var _ = require('underscore');
@@ -6,6 +8,7 @@ var urlParser = require('url');
 var http = require('http');
 var Sequelize = require('sequelize');
 
+// defining Sequelize object, the databases with authentication information
 var sequelize = new Sequelize('archive_machine', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
@@ -14,6 +17,7 @@ var sequelize = new Sequelize('archive_machine', 'root', '', {
   }
 });
 
+//define the Jobs schema object
 var Jobs = sequelize.define('jobs', {
   id:  { type: Sequelize.INTEGER,
   			 autoIncrement: true,
@@ -23,6 +27,7 @@ var Jobs = sequelize.define('jobs', {
   isArchived: Sequelize.BOOLEAN
 });
 
+//do authentication and open connection with the databases
 sequelize
   .authenticate()
   .then(function(err) {
@@ -32,18 +37,14 @@ sequelize
   });
 
 
+//define the default paths to both archived assets directory and site asset directory
 exports.paths = {
   siteAssets: path.join(__dirname, '../client/public'),
   archivedSites: path.join(__dirname, '../archives/sites'),
 };
 
-// Used for stubbing paths for tests, do not modify
-exports.initialize = function(pathsObj){
-  _.each(pathsObj, function(path, type) {
-    exports.paths[type] = path;
-  });
-};
-
+//a function that will query the url, isArchived and id field
+//of database and return them in nicely formatted array
 exports.readListOfUrls = function(callback){
 	var result = [];
 
@@ -66,6 +67,7 @@ exports.readListOfUrls = function(callback){
 	});
 };
 
+//a function that check whether the URL exist in the databases
 exports.isUrlInList = function(url, callback){
   exports.readListOfUrls(function(sites) {
     var found = _.any(sites, function(site, i) {
@@ -75,6 +77,7 @@ exports.isUrlInList = function(url, callback){
   });
 };
 
+//a function that find the jobID given the url
 exports.findJobID = function(url, callback){
     Jobs.findOne({
       where: {url: url},
@@ -88,6 +91,7 @@ exports.findJobID = function(url, callback){
     });
 };
 
+//a function that check for the status of the job (either 'incomplete' or 'completed')
 exports.checkJobStatus = function(id, callback){
     Jobs.findOne({
       where: {id: id},
@@ -101,6 +105,7 @@ exports.checkJobStatus = function(id, callback){
     });
 };
 
+//a function that add the URL to the databases with default field status = 'incomplete' and isArchived = 'false' ie not archived yet
 exports.addUrlToList = function(url, callback){
 	//adding url to txt file
 	var newJob = Jobs.build({url: url,
@@ -117,7 +122,7 @@ exports.addUrlToList = function(url, callback){
 	})
 };
 
-
+//a function that check if the url is already archived
 exports.isURLArchived = function(url, callback){
   var sitePath =  path.join(exports.paths.archivedSites, url);
   fs.exists(sitePath, function(exists) {
@@ -125,6 +130,8 @@ exports.isURLArchived = function(url, callback){
   });
 };
 
+//a function that go through the list of urls array and download them one by one
+//then write them to a file inside ./archives/sites directory
 exports.downloadUrls = function(urls){
   // Iterate over urls and pipe to new files
   console.log('****************DOWNLOADING*****************')

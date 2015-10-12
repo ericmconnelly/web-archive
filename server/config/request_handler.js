@@ -1,3 +1,9 @@
+//Purpose: an request handler that handle GET request to some asset
+//will either
+//  1. return a specific asset if valid and archived
+//  or 2. send the user to loading.html if the asset is in the list and is still loading
+//  or 3. send the user 404 if the asset is invalid
+
 var utils = require('../http-helpers');
 var urlParser = require('url');
 var utils = require('../http-helpers');

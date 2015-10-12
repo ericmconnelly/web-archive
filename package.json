@@ -1,9 +1,9 @@
 {
-  "name": "web-historian",
-  "version": "1.0.1",
-  "main": "web/basic-server.js",
-  "author": "Hack Reactor",
-  "license": "Copyright 2014, Hack Reactor. All rights reserved.",
+  "name": "web-archive",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "author": "Eric Le",
+  "license": "Copyright 2015. License MIT",
   "dependencies": {
     "body-parser": "^1.14.1",
     "cors": "^2.7.1",
@@ -28,7 +28,6 @@
     "mysql": "^2.8.0"
   },
   "scripts": {
-    "test": "node ./web/basic-server.js & mocha test/test.js; RES=$?; kill %1; exit $RES",
-    "start": "node ./web/basic-server.js"
+    "start": "nodemon ./server/server.js"
   }
 }

@@ -1,3 +1,5 @@
+//Purpose: an API routes configuration for /api/job
+
 var jobController = require('./jobController.js');
 
 module.exports = function(app) {

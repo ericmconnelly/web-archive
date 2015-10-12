@@ -39,7 +39,7 @@ Type these commands to get started:
 4. `npm install` node dependencies
 5. In a separate tab of terminal in a same directory, type in `mysql -u root < ./schema.sql`
 6. Finally, run `npm start`
-7. Go to 'http://localhost:8080'
+7. Go to `http://localhost:8080`
 8. Enjoy using the app
 
 ## TECH STACK

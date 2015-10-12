@@ -51,7 +51,7 @@ Type these commands to get started:
 ### BACK END
 
 - Node/Express
-- MySQL
+- MySQL/Sequelize
 
 ### API
 
@@ -62,7 +62,7 @@ Type these commands to get started:
 
 ### DESIGN DECISION
 
-I use Node and Express to run server and construct a RESTful API to allow user to queue up job request and request job status. Node and Express makes it easy to organize application into components and come with a lot of built-in, third-party middlewares such as url-parser, morgan and cors.
+I use Node and Express to run server and construct a RESTful API to allow user to queue up job request and request job status. Node and Express makes it easy to organize application into components and come with a lot of built-in, third-party middlewares such as url-parser, morgan and cors. I used Sequelize(an ORM layer for MySQL) to store queue jobs, their ID and status and allow user to check against the databases for status
 
 On the front end, I use simple HTML and CSS to construct the view and input field. Because no data binding is necessary, I avoid using framework such as Angular or React.
 
